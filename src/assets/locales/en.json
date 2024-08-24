@@ -1,0 +1,29 @@
+{
+  "translation": {
+    "common": {
+      "loading": "Loading...",
+      "buttons": {
+        "goback": "Go back"
+      },
+      "copyright": "\u00a9 {{year}} Company Name S.A."
+    },
+    "signin": {
+      "greeting": "Hello,",
+      "greeting-2": "It's a pleasure",
+      "sequence": ["\u0020Gamer.", "\u0020GTA Lover.", "\u0020User."]
+    },
+    "error": {
+      "title": "Oops! Application error.",
+      "description": "Something went wrong. We're experiencing technical difficulties. Please refresh the page or try again later.",
+      "reload": {
+        "message": "Try reload",
+        "info": "The page will reload in {{seconds}} seconds."
+      },
+      "minigame": {
+        "question": "Would you like to try a minigame in the meantime?",
+        "play": "Play!",
+        "score": "Score"
+      }
+    }
+  }
+}
