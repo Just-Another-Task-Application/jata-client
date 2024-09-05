@@ -5,7 +5,9 @@ import {
 
 import RootLayout from '@Layout/RootLayout';
 import ErrorLayout from '@Layout/ErrorLayout';
+import NotFoundLayout from '@Layout/NotFoundLayout';
 
+import LandingRoutes from '@landing/Routes'
 import PCURoutes from '@pcu/Routes';
 
 const routes: Array<RouteObject> = [
@@ -16,9 +18,15 @@ const routes: Array<RouteObject> = [
     // element: <ErrorLayout/>,
     errorElement: <ErrorLayout/>,
     children: [
+      ...LandingRoutes,
       ...PCURoutes,
     ]
   },
+  {
+    id: '404',
+    path: '*',
+    element: <NotFoundLayout/>
+  }
 ];
 
 const Router = createBrowserRouter(routes);

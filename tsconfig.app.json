@@ -31,15 +31,21 @@
     /* Aliases */
     "baseUrl": "./",
     "paths": {
+      "@root/*": ["./*"],
       "@ioc/*": ["./src/ioc/*"],
       "@apps/*": ["./src/apps/*"],
       "@pcu/*": ["./src/apps/PCU/*"],
+      "@landing/*": ["./src/apps/Landing/*"],
       "@assets/*": ["./src/assets/*"],
       "@Shared/*": ["./src/apps/Shared/*"],
+      "@types/*": ["./src/apps/Shared/types/*"],
       "@theme/*": ["./src/apps/Shared/Theme/*"],
       "@Layout/*": ["./src/apps/Shared/Layout/*"],
       "@Components/*": ["./src/apps/Shared/Components/*"],
     }
   },
-  "include": ["src"]
+  "include": [
+    "src",
+    "src/palette.ts"
+  ]
 }

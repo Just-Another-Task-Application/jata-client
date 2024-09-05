@@ -25,7 +25,7 @@ const CustomButton = forwardRef<HTMLButtonElement, CustomButtonProps>((
   return (
     <Button
       {...args}
-      className={`text-base rounded-xl normal-case font-poppins font-semibold py-3 ${args.className}`}
+      className={`text-base rounded-xl normal-case font-poppins font-semibold py-3 px-12 ${args.className ?? ''}`}
       ref={ref}>
       {loading && <Loading className='animate-spin'/>}
       {!loading && children}

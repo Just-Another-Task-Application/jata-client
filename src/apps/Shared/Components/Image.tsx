@@ -7,7 +7,7 @@ import {
   ReactNode,
   MouseEvent,
   ChangeEvent,
-  PropsWithChildren,
+  ComponentPropsWithRef,
 } from 'react';
 import { useSnackbar, } from 'notistack';
 import { useTranslation, } from 'react-i18next';
@@ -38,8 +38,9 @@ type FileProps = {
   src?: string;
 }
 
-type PictureProps = object & PropsWithChildren & {
+type PictureProps = object & ComponentPropsWithRef<'figure'> & {
   className?: string;
+  imgClassName?: string;
   file?: FileProps;
   alt: string;
   isReadonly?: boolean;
@@ -53,7 +54,10 @@ const Image: FC<PictureProps> = ({
   icon,
   action,
   className,
+  imgClassName,
   isReadonly = true,
+  onClick,
+  ...args
 }) => {
   const { t, } = useTranslation();
 
@@ -138,9 +142,13 @@ const Image: FC<PictureProps> = ({
         <figure
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
-          className={`relative flex items-center justify-center ${className ?? new String()}`}>
+          className={`relative flex items-center justify-center ${className ?? ''}`}
+          onClick={onClick}
+          style={{
+            ...args.style,
+          }}>
           <img 
-            className='w-full h-full object-cover rounded-[inherit]' 
+            className={`w-full h-full object-cover rounded-[inherit] ${imgClassName ?? ''}`} 
             src={file?.src} 
             alt={alt} 
             ref={imageRef} 

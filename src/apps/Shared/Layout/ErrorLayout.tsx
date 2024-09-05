@@ -12,6 +12,7 @@ import {
   Typography, 
 } from '@theme/main';
 import { useSnackbar } from 'notistack';
+import { useRouteError } from 'react-router-dom';
 
 const FPS = 60;
 
@@ -29,6 +30,8 @@ type ErrorLayoutProps = object;
 
 const ErrorLayout: FC<ErrorLayoutProps> = () => {
   const { t, } = useTranslation();
+
+  const error = useRouteError();
 
   const snackbarRef = useRef<number | string | null>(null);
   const gameContainerRef = useRef<HTMLDivElement | null>(null);
@@ -169,7 +172,7 @@ const ErrorLayout: FC<ErrorLayoutProps> = () => {
             <div className='absolute bottom-0 mb-6 flex items-center gap-x-1 text-lg'>
               <span>{t('error.minigame.question')}</span>
               <span 
-                className='text-primary-500 underline hover:cursor-pointer font-semibold'
+                className='text-primary-main underline hover:cursor-pointer font-semibold'
                 onClick={() => handleStartMinigame()}>
                 {t('error.minigame.play')}
               </span>
@@ -197,7 +200,7 @@ const ErrorLayout: FC<ErrorLayoutProps> = () => {
               }}
               className='relative h-full w-full py-6'>
               <button 
-                className='relative w-[20px] h-[20px] rounded-full bg-red-500 z-10'
+                className='relative w-[20px] h-[20px] rounded-full bg-primary-main z-10'
                 onClick={() => {
                   playMinigame();
                   setScore(score + 1);

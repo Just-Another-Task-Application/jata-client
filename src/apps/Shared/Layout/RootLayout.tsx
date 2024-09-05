@@ -16,7 +16,6 @@ const RootLayout: FC<RootLayoutProps> = () => {
       <div style={{
         position: 'relative',
         top: navigation?.state === 'loading' && loadingBarRef.current ? `${loadingBarRef?.current?.clientHeight}px` : '0px',
-        // top: navigation?.state === 'loading' ? `` : '0px',
       }}>
         <Outlet/>
       </div>
