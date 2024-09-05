@@ -12,9 +12,27 @@
         "discord": "Discord",
         "facebook": "Facebook",
         "instagram": "Instagram"
-      }
+      },
+      "languages": [
+        {
+          "code": "es",
+          "label": "Spanish"
+        },
+        {
+          "code": "en",
+          "label": "English"
+        }
+      ]
     },
     "landing": {
+      "pageTitle": "GTA Stories",
+      "title": {
+        "grand": "Grand",
+        "theft": "Theft",
+        "auto": "Auto",
+        "stories": "Stories"
+      },
+      "summary": "Enjoy playing on our online server for the GTA:SA-MP game mode. Buy a business and hire employees, make profits with your ventures, and stay safe at home. The only limit is you. Join our Discord to stay updated on the launch.",
       "navbar": {
         "overview": {
           "text": "Overview",
@@ -50,7 +68,11 @@
       "helperText": "First you need enter your username to verify your created account in Company Name S.A.",
       "helperText-2": "Please, enter your password to continue.",
       "forgotPassword": "Forgot password?",
-      "sequence": ["\u0020Gamer.", "\u0020GTA Lover.", "\u0020Roleplayer."],
+      "sequence": [
+        "\u0020Gamer.",
+        "\u0020GTA Lover.",
+        "\u0020Roleplayer."
+      ],
       "username": {
         "label": "Username",
         "placeholder": "Ex. Firstname_Lastname"

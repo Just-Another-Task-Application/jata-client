@@ -5,8 +5,10 @@ import {
   useEffect,
   ComponentPropsWithoutRef,
   useMemo,
+  useState,
+  MouseEvent,
 } from 'react';
-import { NavLink, Path, } from 'react-router-dom';
+import { NavLink, Path, useNavigate, } from 'react-router-dom';
 import { animated, } from '@react-spring/web';
 import { useTranslation, } from 'react-i18next';
 
@@ -15,9 +17,11 @@ import LightMode from '@mui/icons-material/LightMode';
 import Translate from '@mui/icons-material/Translate';
 
 import {
+  Menu,
   Button,
   Tooltip,
   IconButton,
+  MenuItem,
 } from '@theme/main';
 
 import logo from '@assets/img/gta-stories-logo.png';
@@ -25,6 +29,11 @@ import logo from '@assets/img/gta-stories-logo.png';
 import { useTheme, } from '@Shared/hooks/useTheme';
 
 import Image from '@Components/Image';
+
+type Language = {
+  code: string;
+  label: string;
+};
 
 type NavbarLink = {
   label: string;
@@ -41,10 +50,17 @@ export const Navbar: FC<NavbarProps> = ({
   style,
   onStatusChange,
 }) => {
-  const { t, } = useTranslation();
-  const { theme, setTheme, } = useTheme();
+  const navigate = useNavigate();
 
+  const { t, i18n, } = useTranslation();
+
+  const { theme, setTheme, } = useTheme();
+  
   const navbarRef = useRef<HTMLElement | null>(null);
+
+  const [languageAnchorEl, setLanguageAnchorEl,] = useState<HTMLElement | null>(null);
+
+  const isLanguageMenuOpen = Boolean(languageAnchorEl);
 
   const navbarLinks = useMemo<Array<NavbarLink>>(
     () => [
@@ -63,12 +79,33 @@ export const Navbar: FC<NavbarProps> = ({
         to: './forum',
         tooltip: t('landing.navbar.forum.tooltip'),
       },
-    ], []
+    ], [t,],
   );
 
-  const handleChangeTheme = () => {
+  const languageOptions = useMemo<Array<Language>>(
+    () => (t('common.languages') as unknown as Array<Language>)
+      .map(language => ({ ...language, })), 
+    [t,],
+  );
+
+  const handleChangeTheme: () => void = () => {
     const newTheme = theme === 'dark' ? 'light' : 'dark';
     setTheme(newTheme);
+  };
+
+  const handleChangeLanguage: (language: string) => void = async (l) => {
+    await i18n.changeLanguage(l);
+    setLanguageAnchorEl(null);
+  }
+
+  const handleChangeLanguageMenu: (element: MouseEvent<HTMLButtonElement>) => void = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    if (!isLanguageMenuOpen)
+      setLanguageAnchorEl(e.currentTarget);
+    else
+      setLanguageAnchorEl(null);
   };
 
   useEffect(() => {
@@ -110,10 +147,33 @@ export const Navbar: FC<NavbarProps> = ({
               title={t('landing.navbar.language.tooltip')}
               placement='bottom'>
               <IconButton 
-                color='inherit'>
+                color='inherit'
+                onClick={handleChangeLanguageMenu}>
                 <Translate/>
               </IconButton>
             </Tooltip>
+            <Menu
+              disableScrollLock
+              id='language-menu'
+              anchorEl={languageAnchorEl}
+              open={isLanguageMenuOpen}
+              onClose={handleChangeLanguageMenu}
+              slotProps={{
+                paper: {
+                  className: 'dark:bg-black dark:text-white'
+                } 
+              }}
+            >
+              {languageOptions && languageOptions.map(language => (
+                <MenuItem 
+                  key={language.code} 
+                  className={`font-poppins font-medium hover:bg-primary-main ${i18n.language.includes(language.code) ? 'bg-primary-main' : ''}`}
+                  onClick={() => handleChangeLanguage(language.code)}
+                >
+                  {language.label}
+                </MenuItem>
+              ))}
+            </Menu>
           </div>
           <span>|</span>
           {navbarLinks && navbarLinks.map(link => (
@@ -138,7 +198,9 @@ export const Navbar: FC<NavbarProps> = ({
               <Button
                 variant='contained'
                 color='primary'
-                className='hover:bg-secondary-main font-montserrat-alternates'>
+                className='hover:bg-secondary-main font-montserrat-alternates'
+                onClick={() => navigate('/signin')}
+              >
                 {t('landing.navbar.pcu.text')}
               </Button>
             </Tooltip>

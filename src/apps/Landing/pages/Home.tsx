@@ -5,7 +5,9 @@ import {
   useState,
 } from 'react';
 import { animated, } from '@react-spring/web';
-import { useTranslation, } from 'react-i18next';
+import { 
+  useTranslation,
+} from 'react-i18next';
 
 import {
   Typography,
@@ -42,7 +44,9 @@ const Home: FC<HomeProps> = () => {
     setNavbarHeight(clientHeight);
   };
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    setTitle(t('landing.pageTitle'));
+  }, [t]);
 
   return (
     <div className='relative size-full min-h-screen overflow-hidden dark:bg-black dark:text-white'>
@@ -83,42 +87,39 @@ const Home: FC<HomeProps> = () => {
               height: `calc(100% - ${navbarHeight}px)`
             }}
           >
-            <div className='w-full h-[inherit] max-w-screen-2xl mx-auto px-12'>
+            <div className='size-full max-w-screen-2xl mx-auto px-12'>
               <div className='size-full flex items-center gap-x-12'>
                 <div className='flex flex-col max-w-screen-md px-12 2xl:px-0'>
-                  <div className='flex flex-col text-7xl 2xl:text-9xl font-gta-2 lowercase text-white'>
-                    <span className='2xl:leading-[120px]'>Grand</span>
-                    <span className='2xl:leading-[120px]'>Theft</span>
-                    <span className='2xl:leading-[120px]'>Auto</span>
+                  <div 
+                    className='flex flex-col text-7xl 2xl:text-9xl font-gta-2 lowercase text-white'>
+                    <span className='2xl:leading-[120px]'>{t('landing.title.grand')}</span>
+                    <span className='2xl:leading-[120px]'>{t('landing.title.theft')}</span>
+                    <span className='2xl:leading-[120px]'>{t('landing.title.auto')}</span>
                     <span
                       className='leading-[72px] text-primary-main'
                       style={{
                         textShadow: '-1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black'
                       }}>
-                      Stories
+                      {t('landing.title.stories')}
                     </span>
                   </div>
                   <div className='mt-6 py-6'>
                     <Typography
                       variant='body1'
                       className='font-poppins text-lg text-white'>
-                      Disfruta jugando nuestro servidor en linea para el modo
-                      de juego Gran Theft The Auto San Andreas. Compra una empresa
-                      y contrata empleados, haz ganancias con tus negocios, mantente
-                      seguro en una casa. El limite eres tú. unete a nuestro discord
-                      para no perderte ninguna novedad sobre el lanzamiento.
+                      {t('landing.summary')}
                     </Typography>
                   </div>
                 </div>
-                <div className='ml-auto'></div>
+                {/* <div className='ml-auto'></div> */}
               </div>
             </div>
           </div>
         </animated.div>
       </section>
-      <div className='h-full min-h-screen'>
+      {/* <div className='h-full min-h-screen'>
         Hola
-      </div>
+      </div> */}
     </div>
   );
 };

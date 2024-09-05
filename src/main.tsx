@@ -25,7 +25,6 @@ async function init(): Promise<boolean> {
         es,
         en,
       },
-      fallbackLng: 'es',
       lowerCaseLng: true,
       returnNull: true,
       returnObjects: true,

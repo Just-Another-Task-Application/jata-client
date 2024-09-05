@@ -1,8 +1,106 @@
 {
   "translation": {
     "common": {
-      "loading": "Cargando..."
+      "loading": "Cargando...",
+      "buttons": {
+        "next": "Siguiente",
+        "goback": "Volver atr\u00e1s",
+        "signin": "Iniciar sesi\u00f3n"
+      },
+      "copyright": "\u00a9 {{year}} Company Name S.A. Todos los derechos reservados.",
+      "social": {
+        "discord": "Discord",
+        "facebook": "Facebook",
+        "instagram": "Instagram"
+      },
+      "languages": [
+        {
+          "code": "es",
+          "label": "Espa\u00f1ol"
+        },
+        {
+          "code": "en",
+          "label": "Ingl\u00e9s"
+        }
+      ]
     },
-    "helloworld": "Hola mundo"
+    "landing": {
+      "pageTitle": "GTA Stories",
+      "title": {
+        "grand": "Grand",
+        "theft": "Theft",
+        "auto": "Auto",
+        "stories": "Stories"
+      },
+      "summary": "Disfruta jugando en nuestro servidor en l\u00ednea para el modo \n de juego GTA:SA-MP. Compra una empresa \n y contrata empleados, haz ganancias con tus negocios, mantente \n seguro en una casa. El l\u00edmite eres t\u00fa. \u00danete a nuestro discord \n para no perderte ninguna novedad sobre el lanzamiento.",
+      "navbar": {
+        "overview": {
+          "text": "Resumen",
+          "tooltip": "Conoce todo acerca del servidor"
+        },
+        "discord": {
+          "tooltip": "\u00danete a nuestro discord"
+        },
+        "forum": {
+          "text": "Foro",
+          "tooltip": "Temas relacionados al servidor"
+        },
+        "shop": {
+          "text": "Tienda",
+          "tooltip": "Realiza tus compras"
+        },
+        "pcu": {
+          "text": "PCU",
+          "tooltip": "Maneja tu cuenta"
+        },
+        "language": {
+          "tooltip": "Cambiar idioma"
+        },
+        "darkMode": {
+          "tooltip": "Cambiar tema"
+        }
+      }
+    },
+    "signin": {
+      "greeting": "Hola,",
+      "greeting-2": "Es un placer",
+      "welcome": "Bienvenido de nuevo {{username}}",
+      "helperText": "Primero tipea tu nombre de usuario para verificar tu cuenta creada en Company Name.",
+      "helperText-2": "Por favor, ingresa tu contrase\u00f1a para continuar.",
+      "forgotPassword": "¿Olvidaste tu contrase\u00f1a?",
+      "sequence": ["\u0020Gamer.", "\u0020GTA Lover.", "\u0020Roleplayer."],
+      "username": {
+        "label": "Nombre de usuario",
+        "placeholder": "Ej. Nombre_Apellido"
+      },
+      "remember": {
+        "label": "Recordar dispositivo por 30 d\u00edas."
+      },
+      "password": {
+        "label": "Contrase\u00f1a",
+        "placeholder": "- - - - - - - -"
+      }
+    },
+    "dashboard": {
+      "sidebar": {
+        "dashboard": "Panel",
+        "settings": "Configuraciones",
+        "inventory": "Inventario",
+        "chat": "Foro"
+      }
+    },
+    "error": {
+      "title": "Oops! Application error.",
+      "description": "Something went wrong. We're experiencing technical difficulties. Please refresh the page or try again later.",
+      "reload": {
+        "message": "Try reload",
+        "info": "The page will reload in {{seconds}} seconds."
+      },
+      "minigame": {
+        "question": "Would you like to try a minigame in the meantime?",
+        "play": "Play!",
+        "score": "Score"
+      }
+    }
   }
 }

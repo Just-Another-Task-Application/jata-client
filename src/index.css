@@ -5,6 +5,13 @@
 :root {
   --color-primary: '#072ac';
   --color-dark: '#394253';
+
+  --hightlight-color: #cc0000;
+}
+
+*::selection {
+  background-color: transparent;
+  color: var(--hightlight-color);
 }
 
 *::-webkit-scrollbar {

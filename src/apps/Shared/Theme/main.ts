@@ -2,9 +2,11 @@ import { createTheme, } from '@mui/material';
 
 import palette from '@root/src/palette';
 
+import Menu from './Menu';
 import Input from './Input';
 import Button from './Button';
 import Tooltip from './Tooltip';
+import MenuItem from './MenuItem';
 import Checkbox from './Checkbox';
 import Typography from './Typography';
 import IconButton from './IconButton';
@@ -62,9 +64,11 @@ export const theme = createTheme({
 });
 
 export { 
+  Menu,
   Input, 
   Button, 
   Tooltip,
+  MenuItem,
   Checkbox,
   Typography, 
   IconButton,
