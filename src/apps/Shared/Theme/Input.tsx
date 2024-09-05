@@ -153,7 +153,7 @@ const CustomInput = forwardRef<HTMLInputElement, CustomInputProps>((
           }}
           ref={(nativeElement) => {
             inputRef.current = nativeElement as HTMLInputElement;
-            ref = nativeElement;
+            // ref = nativeElement;
           }}>
           {children}
         </TextField>
