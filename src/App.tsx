@@ -20,31 +20,32 @@ import { ContainerProvider, } from '@Shared/contexts/ContainerProvider';
 import { ThemeProvider as CustomTheme, ThemeType, } from '@Shared/contexts/ThemeProvider';
 
 import LoadingBar from '@Components/LoadingBar';
+import { RecoilRoot } from 'recoil';
 
 const MAX_SNACK_QTY = 5;
 
 type AppProps = object;
 
 const App: FC<AppProps> = () => {
-  const { t, } = useTranslation();
-  
   const [ defaultTheme, setDefaultTheme, ] = useState<ThemeType>('light');
 
   return (
-    <Suspense fallback={<p>{t('common.loading')}</p>}>
-      <CustomTheme.Provider value={{ theme: defaultTheme, setTheme: setDefaultTheme, }}>
-        <ThemeProvider theme={muiTheme}>
-          <StyledEngineProvider injectFirst>
-            <ContainerProvider.Provider value={container}>
-              <SnackbarProvider maxSnack={MAX_SNACK_QTY}>
-                <RouterProvider 
-                  router={Router}
-                  fallbackElement={<LoadingBar/>}/>
-              </SnackbarProvider>
-            </ContainerProvider.Provider>
-          </StyledEngineProvider>
-        </ThemeProvider>
-      </CustomTheme.Provider>
+    <Suspense fallback={<LoadingBar/>}>
+      <RecoilRoot>
+        <CustomTheme.Provider value={{ theme: defaultTheme, setTheme: setDefaultTheme, }}>
+          <ThemeProvider theme={muiTheme}>
+            <StyledEngineProvider injectFirst>
+              <ContainerProvider.Provider value={container}>
+                <SnackbarProvider maxSnack={MAX_SNACK_QTY}>
+                  <RouterProvider 
+                    router={Router}
+                    fallbackElement={<LoadingBar/>}/>
+                </SnackbarProvider>
+              </ContainerProvider.Provider>
+            </StyledEngineProvider>
+          </ThemeProvider>
+        </CustomTheme.Provider>
+      </RecoilRoot>
     </Suspense>
   );
 }

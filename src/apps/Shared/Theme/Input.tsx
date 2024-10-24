@@ -4,10 +4,13 @@ import {
   useState,
   forwardRef,
   ReactNode,
-  MouseEvent, 
+  MouseEvent,
+  FocusEvent,
+  ChangeEvent, 
 } from 'react';
 import { useSnackbar, } from 'notistack';
 import { useTranslation, } from 'react-i18next';
+
 import TextField, { TextFieldProps } from '@mui/material/TextField';
 
 import Copy from '@mui/icons-material/ContentPaste';
@@ -21,19 +24,22 @@ type CustomInputProps = object & Omit<TextFieldProps, OmitTextFieldProps> & {
   editable?: boolean;
   clipboard?: boolean;
   onClipboardCopy?: (...args: Array<unknown>) => unknown;
+  pattern?: RegExp;
 };
 
 const CustomInput = forwardRef<HTMLInputElement, CustomInputProps>((
   {
     icon,
     label,
+    error,
+    pattern,
     children,
     onClipboardCopy,
+    helperText,
     editable = true,
     clipboard = false,
     ...args
   },
-  ref,
 ) => {
   const { t, } = useTranslation();
 
@@ -95,32 +101,37 @@ const CustomInput = forwardRef<HTMLInputElement, CustomInputProps>((
     });
   };
 
+  const handleOnChange: (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void = (e) => {
+    if (args.onChange) args.onChange(e);
+  };
+
   return (
-    <div className='flex flex-col gap-y-2'>
+    <div className='w-full flex flex-col gap-y-2'>
       <label 
         htmlFor={args.id}
-        className={`flex flex-col rounded-xl px-3 py-3 border gap-y-1 ${args.className ?? ''} ${focus ? 'border-primary-800' : 'border-dark-200'}`}>
+        className={`flex flex-col rounded-xl px-3 py-3 border gap-y-1 ${args.className ?? ''} ${focus ? 'border-primary-main' : 'border-dark-200'}`}>
         {label && (
-          <span className={`ml-1 text-sm leading-5 font-poppins font-semibold ${focus ? 'text-primary-800' : 'text-dark-900'}`}>
+          <span className={`ml-1 text-sm leading-5 font-poppins font-semibold ${focus ? 'text-primary-main' : 'text-dark-900'}`}>
             {label}
           </span>
         )}
         <TextField 
           {...args}
           id={args.id}
+          error={error}
           disabled={args.disabled ?? !editable}
           className={`rounded-[inherit] border-none outline-none`}
           InputProps={{
             ...args.InputProps,
             ...(!clipboard && icon && args.type !== 'password' && {
               endAdornment: <span 
-                className={`absolute right-0 p-1 rounded-xl ${focus ? 'text-primary-800' : 'text-dark-300'}`}>
+                className={`absolute right-0 p-1 rounded-xl ${focus ? 'text-primary-main' : 'text-dark-300'}`}>
                 {icon}
               </span>,
             }),
             ...(args.disabled && clipboard && args.type !== 'password' && {
               endAdornment: <span 
-                className='z-20 p-1 rounded-md border border-primary-800 text-primary-800 hover:cursor-pointer'
+                className='z-20 p-1 rounded-md border border-primary-alt-main text-primary-main hover:cursor-pointer'
                 onClick={handleClipboard}>
                 <Copy className='text-xl' />
               </span>,
@@ -145,19 +156,27 @@ const CustomInput = forwardRef<HTMLInputElement, CustomInputProps>((
           inputProps={{
             ...args.inputProps,
             onFocus: () => setFocus(true),
-            onBlur: (e) => {
+            onBlur: (e: FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
               if (args.onBlur) args?.onBlur(e);
               setFocus(false);
+            },
+            onChange: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+              handleOnChange(e);
             },
             className: `border-none outline-none rounded-[inherit] py-1 px-1 text-dark-600 font-poppins font-medium ${args.inputProps?.className ?? new String()}`
           }}
           ref={(nativeElement) => {
             inputRef.current = nativeElement as HTMLInputElement;
-            // ref = nativeElement;
           }}>
           {children}
         </TextField>
       </label>
+      {(helperText || error) && (
+        <span 
+          className={`ml-2 text-base font-poppins ${error ? 'text-dark-600' : ''}`}>
+          {helperText}
+        </span>
+      )}
     </div>
   )
 });

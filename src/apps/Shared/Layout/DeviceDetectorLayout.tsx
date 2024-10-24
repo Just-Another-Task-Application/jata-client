@@ -2,12 +2,13 @@ import {
   FC,
   ReactNode, 
   PropsWithChildren,
+  Fragment,
 } from 'react';
 import { useMediaQuery, } from 'react-responsive';
 
 type DeviceDetectorLayoutProps = object & PropsWithChildren & {
-  mobileComponent: FC | ReactNode;
-  desktopComponent: FC | ReactNode;
+  mobileComponent: ReactNode;
+  desktopComponent: ReactNode;
 };
 
 const DeviceDetectorLayout: FC<DeviceDetectorLayoutProps> = ({
@@ -20,11 +21,11 @@ const DeviceDetectorLayout: FC<DeviceDetectorLayoutProps> = ({
   });
 
   return (
-    <>
+    <Fragment>
       {isMobileDevice && mobileComponent}
       {!isMobileDevice && desktopComponent}
       {children && children}
-    </>
+    </Fragment>
   );
 };
 

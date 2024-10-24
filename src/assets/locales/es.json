@@ -2,10 +2,12 @@
   "translation": {
     "common": {
       "loading": "Cargando...",
+      "or": "O",
       "buttons": {
         "next": "Siguiente",
         "goback": "Volver atr\u00e1s",
-        "signin": "Iniciar sesi\u00f3n"
+        "signin": "Iniciar sesi\u00f3n",
+        "continue": "Continuar"
       },
       "copyright": "\u00a9 {{year}} Company Name S.A. Todos los derechos reservados.",
       "social": {
@@ -61,14 +63,22 @@
         }
       }
     },
+    "signup": {
+      "email": {
+        "subtitle": "Antes de comenzar",
+        "title": "Ind\u00edcanos tu correo electr\u00f3nico",
+        "placeholder": "Escribe aqu\u00ed"
+      }
+    },
     "signin": {
       "greeting": "Hola,",
       "greeting-2": "Es un placer",
       "welcome": "Bienvenido de nuevo {{username}}",
-      "helperText": "Primero tipea tu nombre de usuario para verificar tu cuenta creada en Company Name.",
+      "helperText": "¿No tienes una cuenta? Registrate",
       "helperText-2": "Por favor, ingresa tu contrase\u00f1a para continuar.",
       "forgotPassword": "¿Olvidaste tu contrase\u00f1a?",
       "sequence": ["\u0020Gamer.", "\u0020GTA Lover.", "\u0020Roleplayer."],
+      "discord": "Inicia sesi\u00f3n con Discord",
       "username": {
         "label": "Nombre de usuario",
         "placeholder": "Ej. Nombre_Apellido"

@@ -68,7 +68,7 @@ const SigninPasswordStep: FC<SigninPasswordStepProps> = ({
       <div className='flex flex-col gap-y-1'>
         <Typography
           variant='h3'
-          className='text-4xl font-platypi font-medium leading-[52px] text-dark-800'>
+          className='text-4xl font-platypi font-medium leading-[52px] text-black'>
           {t('signin.welcome', { username: '' })}
           <span className='animate-bounce font-bold text-primary-main'>
             {'Brian Rollins'}

@@ -7,7 +7,7 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   server: {
-    port: 4000
+    port: 4200,
   },
   resolve: {
     alias: {
@@ -15,6 +15,8 @@ export default defineConfig({
       '@ioc': resolve(__dirname, './src/ioc'),
       '@apps': resolve(__dirname, './src/apps/'),
       '@pcu': resolve(__dirname, './src/apps/PCU'),
+      '@contexts': resolve(__dirname, './src/contexts'),
+      '@shared': resolve(__dirname, './src/contexts/shared'),
       '@landing': resolve(__dirname, './src/apps/Landing'),
       '@assets': resolve(__dirname, './src/assets'),
       '@Shared': resolve(__dirname, './src/apps/Shared'),

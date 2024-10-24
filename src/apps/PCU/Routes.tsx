@@ -17,6 +17,12 @@ export default [
     ],
   },
   {
+    id: 'signup',
+    path: 'signup',
+    lazy: () => import('./pages/Signup')
+      .then(module => ({ Component: module.default, })),
+  },
+  {
     id: 'signin',
     path: 'signin',
     lazy: () => import('./pages/Signin')
@@ -27,5 +33,11 @@ export default [
     path: 'recoverAccount',
     lazy: () => import('./pages/Recover')
       .then(module => ({ Component: module.default, })),
-  }
+  },
+  {
+    id: 'callback',
+    path: 'callback',
+    lazy: () => import('./pages/Callback')
+      .then(module => ({ Component: module.default, })),
+  },
 ] as Array<RouteObject>;

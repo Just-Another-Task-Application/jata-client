@@ -7,15 +7,14 @@ import RootLayout from '@Layout/RootLayout';
 import ErrorLayout from '@Layout/ErrorLayout';
 import NotFoundLayout from '@Layout/NotFoundLayout';
 
-import LandingRoutes from '@landing/Routes'
 import PCURoutes from '@pcu/Routes';
+import LandingRoutes from '@landing/Routes'
 
 const routes: Array<RouteObject> = [
   {
     id: 'root',
     path: '',
     element: <RootLayout/>,
-    // element: <ErrorLayout/>,
     errorElement: <ErrorLayout/>,
     children: [
       ...LandingRoutes,

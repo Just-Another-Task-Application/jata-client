@@ -2,6 +2,7 @@
   "translation": {
     "common": {
       "loading": "Loading...",
+      "or": "Or",
       "buttons": {
         "next": "Next",
         "goback": "Go back",
@@ -73,6 +74,7 @@
         "\u0020GTA Lover.",
         "\u0020Roleplayer."
       ],
+      "discord": "Log in with Discord",
       "username": {
         "label": "Username",
         "placeholder": "Ex. Firstname_Lastname"

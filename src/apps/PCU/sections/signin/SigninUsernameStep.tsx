@@ -89,23 +89,23 @@ const SigninUsernameStep: FC<SigninUsernameStepProps> = ({
 
   return (
     <>
-      <div className='flex flex-col gap-y-1'>
+      <div className='flex flex-col'>
         <Typography
           variant='h2'
-          className='font-platypi font-bold leading-[64px] text-primary-main'>
+          className='font-gta-2 font-bold leading-[48px] text-primary-main'>
           {t('signin.greeting')}
         </Typography>
         <Typography
           variant='h3'
-          className='font-platypi font-medium leading-[60px] text-black'>
+          className='font-gta-2 font-medium leading-[44px] text-black'>
           {t('signin.greeting-2')}
           <span
             ref={sequenceRef}
-            className='animate-bounce font-bold text-secondary-main'>
+            className='animate-bounce font-bold text-primary-main'>
             {sequence[0]}
           </span>
         </Typography>
-        <div className='mt-2'>
+        <div className='mt-4'>
           <Typography
             variant='body1'
             className='font-poppins text-dark-600'>

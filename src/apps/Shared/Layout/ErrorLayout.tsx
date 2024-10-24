@@ -33,6 +33,8 @@ const ErrorLayout: FC<ErrorLayoutProps> = () => {
 
   const error = useRouteError();
 
+  console.log('error', error);
+
   const snackbarRef = useRef<number | string | null>(null);
   const gameContainerRef = useRef<HTMLDivElement | null>(null);
   const reloadIntervalRef = useRef<number | string | null>(null);

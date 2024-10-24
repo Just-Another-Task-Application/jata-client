@@ -1,6 +1,7 @@
 import { 
   container, 
   Provider, 
+  Lifecycle,
   InjectionToken, 
   RegistrationOptions,
   TokenProvider,
@@ -8,7 +9,9 @@ import {
   FactoryProvider,
   ClassProvider, 
 } from 'tsyringe';
-import { constructor } from 'tsyringe/dist/typings/types';
+import { constructor, } from 'tsyringe/dist/typings/types';
+
+import { FetchHttpRepository, } from '@shared/infrastructure/repositories/FetchHttpRepository';
 
 export type InjectableType = 'constructor' 
 | 'ValueProvider' 
@@ -23,7 +26,25 @@ export type Injectable = {
   options?: RegistrationOptions;
 };
 
-const dependencies: Array<Injectable> = [];
+const dependencies: Array<Injectable> = [
+  {
+    token: 'BACKEND_URL',
+    provider: {
+      useValue: import.meta.env.VITE_BACKEND_URL,
+    },
+    type: 'ValueProvider',
+  },
+  {
+    token: 'HttpRepository',
+    provider: {
+      useClass: FetchHttpRepository,
+    },
+    type: 'ClassProvider',
+    options: {
+      lifecycle: Lifecycle.Singleton,
+    },
+  },
+];
 
 function registerDependency(dependency: Injectable): void {
   const actions: {

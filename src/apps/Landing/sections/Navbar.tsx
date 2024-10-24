@@ -122,7 +122,7 @@ export const Navbar: FC<NavbarProps> = ({
       style={{
         ...style,
       }}>
-      <div className='px-12 h-full flex items-center gap-x-6'>
+      <div className='px-16 h-full flex items-center gap-x-6'>
         <div className='h-full flex items-center'>
           <Image
             alt='logo'

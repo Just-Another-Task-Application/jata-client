@@ -28,6 +28,8 @@ export default {
     '950': '#4a0605',
   },
   'primary-alt': {
+    main: '#00a6fb',
+    DEFAULT: '#00a6fb',
     '50': '#eff9ff',
     '100': '#def1ff',
     '200': '#b6e5ff',
@@ -67,6 +69,8 @@ export default {
     '950': '#4d0302',
   },
   'secondary-alt': {
+    main: '#ff4500',
+    DEFAULT: '#ff4500',
     '50': '#fff6ec',
     '100': '#ffead3',
     '200': '#ffd1a5',
