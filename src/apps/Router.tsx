@@ -19,7 +19,13 @@ const routes: Array<RouteObject> = [
     children: [
       ...LandingRoutes,
       ...PCURoutes,
-    ]
+      {
+        id: 'shop',
+        path: 'shop',
+        lazy: () => import('./Shop/pages/Shop')
+          .then(module => ({ Component: module.default, })),
+      },
+    ],
   },
   {
     id: '404',

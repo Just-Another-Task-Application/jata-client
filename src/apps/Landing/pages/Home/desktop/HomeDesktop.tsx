@@ -20,9 +20,9 @@ import { useTitle, } from '@Shared/hooks/useTitle';
 import Image from '@Components/Image';
 import Navbar from '@landing/sections/Navbar';
 
-type HomeProps = object;
+type HomeDesktopProps = object;
 
-const Home: FC<HomeProps> = () => {
+const HomeDesktop: FC<HomeDesktopProps> = () => {
   const { t, } = useTranslation();
 
   const { setTitle, } = useTitle();
@@ -124,4 +124,4 @@ const Home: FC<HomeProps> = () => {
   );
 };
 
-export default Home;
+export default HomeDesktop;

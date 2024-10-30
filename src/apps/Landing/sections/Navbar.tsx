@@ -24,7 +24,7 @@ import {
   MenuItem,
 } from '@theme/main';
 
-import logo from '@assets/img/gta-stories-logo.png';
+import logo from '@assets/img/logo.png';
 
 import { useTheme, } from '@Shared/hooks/useTheme';
 
@@ -129,7 +129,7 @@ export const Navbar: FC<NavbarProps> = ({
             file={{
               src: logo,
             }}
-            className='h-9 w-auto' />
+            className='h-12 w-auto' />
         </div>
         <div className='relative ml-auto flex items-center gap-x-6 font-montserrat-alternates text-white'>
           <div className='self-center flex items-center gap-x-4'>
